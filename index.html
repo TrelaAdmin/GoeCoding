@@ -12,7 +12,7 @@
 <script>
 async function findCoordinates() {
   const address = document.getElementById('addressInput').value;
-  const apiKey = 'YOUR_API_KEY_HERE';
+  const apiKey = 'AIzaSyAydNapJUC3vbnx7ecwvTOhOe_39UPhpsY';
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
 
   const response = await fetch(url);
