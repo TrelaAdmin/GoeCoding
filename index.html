@@ -1,1 +1,30 @@
-First line of code
+<head>
+  <title>Adding GeoCoding API</title>
+</head>
+<body>
+
+  <hr>
+<h2>Find Coordinates</h2>
+<input type="text" id="addressInput" placeholder="Enter an address" size="40">
+<button onclick="findCoordinates()">Find</button>
+<p id="result"></p>
+
+<script>
+async function findCoordinates() {
+  const address = document.getElementById('addressInput').value;
+  const apiKey = 'YOUR_API_KEY_HERE';
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (data.status === 'OK') {
+    const location = data.results[0].geometry.location;
+    document.getElementById('result').innerText =
+      `Latitude: ${location.lat}, Longitude: ${location.lng}`;
+  } else {
+    document.getElementById('result').innerText = 'Address not found';
+  }
+}
+</script>
+</body>
